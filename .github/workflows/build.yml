@@ -25,7 +25,10 @@ jobs:
       - name: Generate Gradle wrapper (if missing)
         run: |
           if [ ! -f "./gradlew" ]; then
-            gradle wrapper --gradle-version 8.4
+            mkdir -p /tmp/wrapper-gen
+            cd /tmp/wrapper-gen
+            gradle wrapper --gradle-version 8.6
+            cp -r gradlew gradlew.bat gradle "$GITHUB_WORKSPACE"/
           fi
           chmod +x ./gradlew
 
