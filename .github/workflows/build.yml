@@ -27,6 +27,7 @@ jobs:
           if [ ! -f "./gradlew" ]; then
             mkdir -p /tmp/wrapper-gen
             cd /tmp/wrapper-gen
+            echo "rootProject.name = 'wrapper-gen'" > settings.gradle
             gradle wrapper --gradle-version 8.6
             cp -r gradlew gradlew.bat gradle "$GITHUB_WORKSPACE"/
           fi
